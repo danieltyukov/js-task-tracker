@@ -13,7 +13,9 @@ const Task = ({ task, onDelete, onToggle }) => {
                     onClick={() => onDelete(task.id)}
                 />
             </h3>
-            <p>{task.day}</p>
+            {task.day}{' '}
+            <br />
+            {task.details}
         </div>
     )
 }

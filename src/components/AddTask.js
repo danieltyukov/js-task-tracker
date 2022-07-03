@@ -4,20 +4,22 @@ const AddTask = ({ onAdd }) => {
 
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
+    const [details, setDetails] = useState('')
     const [reminder, setReminder] = useState(false)
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!text) {
-            alert('Please enter a task name')
+        if (!text || !day || !details) {
+            alert('Please enter one of the fields below')
             return
         }
 
-        onAdd({ text, day, reminder })
+        onAdd({ text, day, details, reminder })
 
         setText('')
         setDay('')
+        setDetails('')
         setReminder(false)
     }
 
@@ -39,6 +41,15 @@ const AddTask = ({ onAdd }) => {
                     placeholder='Add Day & Time'
                     value={day}
                     onChange={(e) => setDay(e.target.value)}
+                />
+            </div>
+            <div className='form-control'>
+                <label>Details</label>
+                <textarea
+                    type='text'
+                    placeholder='Add Details'
+                    value={details}
+                    onChange={(e) => setDetails(e.target.value)}
                 />
             </div>
             <div className='form-control form-control-check'>
